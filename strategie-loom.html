@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratégie Loom - Guide Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background: #ffffff;
+        }
+
+        .header {
+            background: #ffffff;
+            color: #000000;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid #AF0000;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #AF0000;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .description {
+            font-size: 0.95rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-section {
+            background: #f5f5f5;
+            border: 3px solid #000000;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            color: #AF0000;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .strategy-card {
+            background: white;
+            border: 3px solid #000000;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .strategy-card.highlight {
+            border-color: #AF0000;
+            background: #fafafa;
+        }
+
+        .strategy-number {
+            background: #AF0000;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .strategy-title {
+            color: #000000;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .strategy-subtitle {
+            color: #AF0000;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            color: #AF0000;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #AF0000;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h3 {
+            color: #000000;
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+            font-weight: 700;
+        }
+
+        .section h4 {
+            color: #333333;
+            font-size: 1rem;
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        .message-box {
+            background: #f5f5f5;
+            color: #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            border: 2px solid #d0d0d0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .message-box.highlight {
+            border-color: #AF0000;
+            box-shadow: 0 0 0 3px rgba(175, 0, 0, 0.1);
+        }
+
+        .when-box {
+            background: #f9f9f9;
+            border-left: 5px solid #000000;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
+        }
+
+        .when-box.do {
+            border-left-color: #000000;
+            background: #f5f5f5;
+        }
+
+        .when-box.dont {
+            border-left-color: #AF0000;
+            background: #fff5f5;
+        }
+
+        .when-box h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .checklist li {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f9f9f9;
+            border-radius: 6px;
+            position: relative;
+            padding-left: 2.5rem;
+            border-left: 2px solid #e0e0e0;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0.75rem;
+            color: #AF0000;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .checklist.cross li:before {
+            content: "✗";
+        }
+
+        .flowchart {
+            background: #fafafa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 2px solid #e0e0e0;
+        }
+
+        .flow-step {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem auto;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .flow-step.important {
+            border-color: #AF0000;
+            border-width: 3px;
+            background: #fafafa;
+        }
+
+        .flow-arrow {
+            color: #AF0000;
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+        }
+
+        .comparison-table th {
+            background: #f5f5f5;
+            color: #000000;
+            padding: 1.2rem;
+            text-align: left;
+            font-size: 1rem;
+            border: 2px solid #000000;
+        }
+
+        .comparison-table td {
+            padding: 1.2rem;
+            border: 2px solid #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .tip {
+            background: #f5f5f5;
+            border: 3px solid #000000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tip strong {
+            color: #AF0000;
+        }
+
+        .warning {
+            background: #fafafa;
+            border: 3px solid #AF0000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .example-box {
+            background: #f9f9f9;
+            border: 2px solid #d0d0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .example-title {
+            font-weight: 700;
+            color: #AF0000;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .conversation {
+            background: #fafafa;
+            border: 2px solid #d0d0d0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .message {
+            background: white;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .message.sent {
+            background: #f5f5f5;
+            margin-left: 2rem;
+            border-left: 3px solid #000000;
+        }
+
+        .message.received {
+            background: #ffffff;
+            margin-right: 2rem;
+            border-left: 3px solid #999999;
+        }
+
+        .message-header {
+            font-weight: 700;
+            color: #AF0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-box {
+            background: #f5f5f5;
+            color: #000000;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 2px solid #AF0000;
+        }
+
+        .stats-box .big-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #AF0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-box .stat-label {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .message.sent {
+                margin-left: 0.5rem;
+            }
+
+            .message.received {
+                margin-right: 0.5rem;
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Stratégie LOOM</h1>
+        <p class="subtitle">Le Guide Complet pour Convertir avec des Vidéos Personnalisées</p>
+        <p class="description">Maîtrise les 2 stratégies pour proposer des Loom et transforme tes prospects en clients qualifiés</p>
+    </div>
+
+    <div class="container">
+
+        <!-- INTRO -->
+        <div class="intro-section">
+            <h2>Pourquoi le Loom est Si Puissant ?</h2>
+            <p><strong>Le Loom vidéo personnalisé est l'arme secrète pour créer la confiance instantanément.</strong></p>
+            <p>En montrant concrètement ce qui freine la conversion du prospect et en donnant une technique actionnable, tu démontres ton expertise SANS vendre.</p>
+            <div class="stats-box" style="margin-top: 2rem;">
+                <div class="big-number">+13%</div>
+                <div class="stat-label">Augmentation moyenne du taux de call bookés</div>
+            </div>
+        </div>
+
+        <!-- LES 2 STRATÉGIES -->
+        <h2 style="text-align: center; font-size: 2.5rem; color: #AF0000; margin: 3rem 0 2rem;">Les 2 Stratégies Loom</h2>
+
+        <div class="strategy-grid">
+            <!-- STRATÉGIE 1 -->
+            <div class="strategy-card highlight">
+                <div class="strategy-number">1</div>
+                <h3 class="strategy-title">Approche Directe</h3>
+                <p class="strategy-subtitle">"J'espionnais ton profil"</p>
+                <p style="text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                    <strong>Pour les prospects avec qui tu as déjà un lien établi</strong>
+                </p>
+            </div>
+
+            <!-- STRATÉGIE 2 -->
+            <div class="strategy-card">
+                <div class="strategy-number">2</div>
+                <h3 class="strategy-title">Approche Progressive</h3>
+                <p class="strategy-subtitle">"J'ai check ton profil une seconde fois"</p>
+                <p style="text-align: center; margin-top: 1rem; font-size: 1.1rem;">
+                    <strong>Après une conversation où tu as identifié des besoins</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- STRATÉGIE 1 DÉTAILLÉE -->
+        <div class="section">
+            <h2>Stratégie 1 : Approche Directe</h2>
+            
+            <h3>Le Message à Envoyer</h3>
+            
+            <div class="message-box highlight">Hello [Prénom] !
+
+Pour info j'espionnais ton profil ce matin (j'en analyse tous les jours).
+
+J'ai vu 4 éléments qui nuisent à ta conversion (dont un que tu peux résoudre en moins de 2mn).
+
+J'ai fait un court Loom de l'analyse, j'y donne même une technique rapide pour augmenter ton taux de call bookés de 13% en moyenne.
+
+Si ça te va je peux t'envoyer le loom directement</div>
+
+            <h3>Quand Utiliser Cette Stratégie ?</h3>
+
+            <div class="when-box do">
+                <h4>UTILISE CETTE STRATÉGIE QUAND :</h4>
+                <ul class="checklist">
+                    <li><strong>Il like régulièrement tes posts</strong> (au moins 3-4 likes)</li>
+                    <li><strong>Il commente sous tes posts</strong> plusieurs fois</li>
+                    <li><strong>Il interagit depuis plusieurs semaines</strong> avec ton contenu</li>
+                    <li><strong>Vous êtes connectés depuis longtemps</strong> (1 mois minimum)</li>
+                    <li><strong>Il a déjà engagé la conversation</strong> par le passé</li>
+                    <li><strong>Tu vois qu'il est actif</strong> sur LinkedIn (poste régulièrement)</li>
+                </ul>
+            </div>
+
+            <div class="when-box dont">
+                <h4>NE PAS UTILISER CETTE STRATÉGIE QUAND :</h4>
+                <ul class="checklist cross">
+                    <li><strong>Il vient d'accepter ta demande de connexion</strong> (trop direct)</li>
+                    <li><strong>C'est votre premier échange</strong></li>
+                    <li><strong>Il n'a jamais interagi</strong> avec ton contenu</li>
+                    <li><strong>Vous n'avez aucun historique</strong></li>
+                    <li><strong>Tu viens de découvrir son profil</strong></li>
+                </ul>
+            </div>
+
+            <h3>Processus Complet - Stratégie 1</h3>
+
+            <div class="flowchart">
+                <div class="flow-step">
+                    <strong>Étape 1 : Identifier le Prospect</strong><br>
+                    Il like/commente régulièrement depuis plusieurs semaines
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>Étape 2 : Analyser son Profil</strong><br>
+                    Bio, posts, offre, positionnement
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step important">
+                    <strong>Étape 3 : Envoyer le Message Direct</strong><br>
+                    "J'espionnais ton profil... 4 éléments qui nuisent..."
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>Étape 4 : Attendre sa Réponse</strong><br>
+                    Généralement positive car il te connaît déjà
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step important">
+                    <strong>Étape 5 : Envoyer le Loom</strong><br>
+                    Avec le message : "Fait moi un p'tit retour quand tu l'auras regardé"
+                </div>
+            </div>
+
+            <h3>Exemple de Conversation Complète</h3>
+
+            <div class="conversation">
+                <div class="message sent">
+                    <div class="message-header">Toi</div>
+                    Hello Luc !<br><br>
+                    Pour info j'espionnais ton profil ce matin (j'en analyse tous les jours).<br><br>
+                    J'ai vu 4 éléments qui nuisent à ta conversion (dont un que tu peux résoudre en moins de 2mn).<br><br>
+                    J'ai fait un court Loom de l'analyse, j'y donne même une technique rapide pour augmenter ton taux de call bookés de 13% en moyenne.<br><br>
+                    Si ça te va je peux t'envoyer le loom directement
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Luc</div>
+                    Hello ! Oui avec plaisir, je suis curieux de voir ça
+                </div>
+
+                <div class="message sent">
+                    <div class="message-header">Toi</div>
+                    [Lien Loom]<br><br>
+                    Fait moi un p'tit retour quand tu l'auras regardé
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Luc</div>
+                    Merci beaucoup ! Super intéressant, j'ai déjà fait le premier ajustement que tu m'as montré
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>PRO TIP :</strong> Avec cette stratégie, le taux d'acceptation est très élevé (70-80%) car le prospect te connaît déjà et a confiance en toi grâce à tes contenus.
+            </div>
+        </div>
+
+        <!-- STRATÉGIE 2 DÉTAILLÉE -->
+        <div class="section">
+            <h2>Stratégie 2 : Approche Progressive</h2>
+            
+            <h3>Le Contexte</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                Cette stratégie s'utilise <strong>APRÈS avoir échangé quelques messages</strong> avec le prospect et <strong>identifié un besoin ou une problématique</strong>. Tu ne proposes pas le Loom dès le premier message, mais après avoir qualifié.
+            </p>
+
+            <h3>Le Message à Envoyer</h3>
+            
+            <div class="message-box highlight">D'ailleurs [Prénom] j'ai check ton profil une seconde fois ahah et j'ai vu 2 éléments qui nuisent à ta conversion (dont un que tu peux résoudre en moins de 2mn).
+
+J'ai fait un court Loom de l'analyse, j'y donne même une technique rapide pour augmenter ton taux de call bookés de 13% en moyenne.
+
+Si ça te va je peux t'envoyer le loom directement.</div>
+
+            <h3>Quand Utiliser Cette Stratégie ?</h3>
+
+            <div class="when-box do">
+                <h4>UTILISE CETTE STRATÉGIE QUAND :</h4>
+                <ul class="checklist">
+                    <li><strong>Nouvelle connexion</strong> (vous venez de vous connecter)</li>
+                    <li><strong>Après 3-5 messages échangés</strong></li>
+                    <li><strong>Tu as identifié un besoin</strong> (manque de clients, positionnement flou, etc.)</li>
+                    <li><strong>Le prospect a mentionné un problème</strong> dans la conversation</li>
+                    <li><strong>Il a répondu positivement</strong> à tes questions de qualification</li>
+                    <li><strong>La conversation est engagée et positive</strong></li>
+                </ul>
+            </div>
+
+            <div class="when-box dont">
+                <h4>NE PAS UTILISER CETTE STRATÉGIE QUAND :</h4>
+                <ul class="checklist cross">
+                    <li><strong>C'est ton premier message</strong> (trop tôt)</li>
+                    <li><strong>Tu n'as pas encore qualifié</strong> son activité</li>
+                    <li><strong>Le prospect est froid ou distant</strong></li>
+                    <li><strong>Tu n'as identifié aucun besoin</strong></li>
+                    <li><strong>Il n'a pas répondu à tes questions</strong> précédentes</li>
+                </ul>
+            </div>
+
+            <h3>Processus Complet - Stratégie 2</h3>
+
+            <div class="flowchart">
+                <div class="flow-step">
+                    <strong>Étape 1 : Premier Contact</strong><br>
+                    Message personnalisé après connexion ou like
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>Étape 2 : Qualification (3-5 messages)</strong><br>
+                    Poser des questions sur son activité, cible, résultats
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step important">
+                    <strong>Étape 3 : Identifier un Besoin/Problème</strong><br>
+                    Positionnement flou, manque de clients, mauvaise conversion
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step important">
+                    <strong>Étape 4 : Proposer le Loom</strong><br>
+                    "D'ailleurs j'ai check ton profil une seconde fois..."
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">
+                    <strong>Étape 5 : Envoyer le Loom</strong><br>
+                    Après acceptation
+                </div>
+            </div>
+
+            <h3>Exemple de Conversation Complète</h3>
+
+            <div class="conversation">
+                <div class="message sent">
+                    <div class="message-header">Toi - Message 1</div>
+                    Hello Wassim<br><br>
+                    merci pour le like<br><br>
+                    j'ai fait un petit tour sur ton profil, petite question tu as une cible bien définie ou tu travailles plus en fonction des projets ?
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Wassim</div>
+                    Salut Alexia, sorry j'avais pas vu ton message<br><br>
+                    Non j'ai pas de cible définie, je fais en fonction du projet.
+                </div>
+
+                <div class="message sent">
+                    <div class="message-header">Toi - Message 2</div>
+                    Ah je vois !<br><br>
+                    Tu travailles sur quels types de projets la plupart du temps ?
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Wassim</div>
+                    La création de SaaS et d'applications principalement
+                </div>
+
+                <div class="message sent">
+                    <div class="message-header">Toi - Message 3</div>
+                    Yes excellent ça !! Il y a un gros marché dans ce secteur !<br><br>
+                    Tu fais aussi de la formation ?
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Wassim</div>
+                    Non pas encore, je souhaite développer mon activité d'avantage et ensuite faire de la forma
+                </div>
+
+                <div class="message sent">
+                    <div class="message-header">Toi - Message 4 (LOOM)</div>
+                    Yes ça serait top ! Ça te permettrait d'avoir du cash flow et de toucher une cible différente.<br><br>
+                    D'ailleurs Wassim j'ai check ton profil une seconde fois ahah et j'ai vu 2 éléments qui nuisent à ta conversion (dont un que tu peux résoudre en moins de 2mn).<br><br>
+                    J'ai fait un court Loom de l'analyse, j'y donne même une technique rapide pour augmenter ton taux de call bookés de 13% en moyenne.<br><br>
+                    Si ça te va je peux t'envoyer le loom directement.
+                </div>
+
+                <div class="message received">
+                    <div class="message-header">Wassim</div>
+                    Yes bien sûr Alexia, avec plaisir !<br>
+                    Je suis curieux de voir ce que tu as repéré, tu peux m'envoyer le Loom
+                </div>
+
+                <div class="message sent">
+                    <div class="message-header">Toi - Message 5</div>
+                    [Lien Loom]<br><br>
+                    Fait moi un retour quand tu l'auras regardé
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>PRO TIP :</strong> Le "D'ailleurs" est crucial car il crée une transition naturelle dans la conversation. Ça ne semble pas préparé à l'avance, mais spontané.
+            </div>
+        </div>
+
+        <!-- TABLEAU COMPARATIF -->
+        <div class="section">
+            <h2>Comparaison des 2 Stratégies</h2>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>Stratégie 1 : Directe</th>
+                        <th>Stratégie 2 : Progressive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Timing</strong></td>
+                        <td>Immédiat (si lien établi)</td>
+                        <td>Après 3-5 messages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Relation préalable</strong></td>
+                        <td>✅ Nécessaire</td>
+                        <td>❌ Pas nécessaire</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Message d'accroche</strong></td>
+                        <td>"J'espionnais ton profil"</td>
+                        <td>"D'ailleurs j'ai check ton profil une seconde fois"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nombre d'éléments mentionnés</strong></td>
+                        <td>4 éléments</td>
+                        <td>2 éléments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Taux d'acceptation</strong></td>
+                        <td>70-80% (très élevé)</td>
+                        <td>50-60% (bon)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Niveau de qualification</strong></td>
+                        <td>Faible (tu découvres)</td>
+                        <td>Élevé (déjà qualifié)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ton du message</strong></td>
+                        <td>Direct et confiant</td>
+                        <td>Naturel et spontané</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meilleur pour</strong></td>
+                        <td>Prospects chauds qui te suivent</td>
+                        <td>Nouvelles connexions</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- STRUCTURE DU LOOM -->
+        <div class="section">
+            <h2>Structure du Loom (3-7 minutes)</h2>
+
+            <div class="flowchart">
+                <div class="flow-step" style="background: #f5f5f5; border-color: #000000;">
+                    <strong>Intro (30 secondes)</strong><br>
+                    "Hello [Prénom], c'est Alexia ! Suite à notre échange sur LinkedIn..."
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="background: #e8e8e8; border-color: #000000;">
+                    <strong>Élément 1 qui freine (1-2 minutes)</strong><br>
+                    Montrer concrètement sur son profil/site
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="background: #e8e8e8; border-color: #000000;">
+                    <strong>Élément 2 qui freine (1-2 minutes)</strong><br>
+                    Montrer concrètement sur son profil/site
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="background: #d8d8d8; border-color: #AF0000;">
+                    <strong>Technique rapide actionnable (1-2 minutes)</strong><br>
+                    Donner UN conseil qu'il peut appliquer IMMÉDIATEMENT
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step" style="background: #f5f5f5; border-color: #000000;">
+                    <strong>Outro (30 secondes)</strong><br>
+                    "Si tu veux qu'on creuse plus en détail, dis-moi !"
+                </div>
+            </div>
+
+            <h3>Exemples d'Éléments qui Freinent la Conversion</h3>
+
+            <div class="example-box">
+                <div class="example-title">Sur le profil LinkedIn :</div>
+                <ul class="checklist">
+                    <li><strong>Photo de profil</strong> peu professionnelle ou absente</li>
+                    <li><strong>Titre LinkedIn</strong> trop vague ("Freelance" au lieu de "Expert en X pour Y")</li>
+                    <li><strong>Section À propos</strong> sans proposition de valeur claire</li>
+                    <li><strong>Pas de CTA</strong> (call-to-action) visible</li>
+                    <li><strong>Posts trop génériques</strong> sans angle spécifique</li>
+                    <li><strong>Aucune preuve sociale</strong> (témoignages, résultats)</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">Sur le site web :</div>
+                <ul class="checklist">
+                    <li><strong>Page d'accueil confuse</strong> (on ne comprend pas ce qu'il fait)</li>
+                    <li><strong>Pas de bénéfices clairs</strong> pour le client</li>
+                    <li><strong>CTA faible</strong> ("En savoir plus" au lieu de "Booker un appel")</li>
+                    <li><strong>Design daté</strong> ou non responsive</li>
+                    <li><strong>Trop d'informations</strong> (surcharge cognitive)</li>
+                    <li><strong>Pas de témoignages</strong> ou de social proof</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <div class="example-title">Techniques Rapides (à mentionner dans le Loom) :</div>
+                <ul class="checklist">
+                    <li><strong>Changer le titre LinkedIn</strong> en 2 minutes pour être plus spécifique</li>
+                    <li><strong>Ajouter un CTA clair</strong> dans la section À propos</li>
+                    <li><strong>Restructurer la page d'accueil</strong> avec le framework AIDA</li>
+                    <li><strong>Modifier le CTA principal</strong> pour être plus actionnable</li>
+                    <li><strong>Ajouter des chiffres</strong> dans les posts LinkedIn pour crédibilité</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>IMPORTANT :</strong> Le Loom doit apporter de la VRAIE valeur. Ne pas juste dire "ton profil n'est pas optimisé", mais MONTRER concrètement quoi changer et pourquoi. Partage ton écran et montre en direct.
+            </div>
+        </div>
+
+        <!-- CHECKLIST FINALE -->
+        <div class="section">
+            <h2>Checklist Avant d'Envoyer un Loom</h2>
+
+            <h3>Préparation</h3>
+            <ul class="checklist">
+                <li>J'ai analysé en profondeur le profil du prospect (bio, posts, site)</li>
+                <li>J'ai identifié AU MOINS 2 éléments concrets qui freinent sa conversion</li>
+                <li>J'ai préparé une technique actionnable qu'il peut appliquer immédiatement</li>
+                <li>J'ai choisi la bonne stratégie (1 ou 2) selon le contexte</li>
+                <li>Mon Loom est prêt à être enregistré (3-7 minutes maximum)</li>
+            </ul>
+
+            <h3>Enregistrement du Loom</h3>
+            <ul class="checklist">
+                <li>Intro personnalisée avec son prénom</li>
+                <li>Je montre concrètement les éléments sur son profil/site (partage d'écran)</li>
+                <li>J'explique POURQUOI c'est un problème (pas juste QUOI changer)</li>
+                <li>Je donne une technique actionnable avec étapes claires</li>
+                <li>Outro qui invite à l'échange sans être insistant</li>
+                <li>Durée : entre 3 et 7 minutes (pas plus !)</li>
+            </ul>
+
+            <h3>Envoi du Message</h3>
+            <ul class="checklist">
+                <li>J'ai utilisé le bon template selon la stratégie</li>
+                <li>Le message est personnalisé avec son prénom</li>
+                <li>Je mentionne le nombre exact d'éléments (2 ou 4)</li>
+                <li>Je cite le bénéfice chiffré (+13% de call bookés)</li>
+                <li>Je demande la permission avant d'envoyer le Loom</li>
+            </ul>
+
+            <h3>Suivi</h3>
+            <ul class="checklist">
+                <li>J'envoie le Loom dès qu'il accepte</li>
+                <li>Message d'accompagnement court : "Fait moi un retour 😊"</li>
+                <li>Je prépare mes créneaux de dispo pour l'appel</li>
+                <li>Je relance après 2-3 jours si pas de réponse</li>
+                <li>Je traite les objections avec empathie si nécessaire</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="section" style="text-align: center; background: #f5f5f5; border: 3px solid #AF0000;">
+            <h2 style="color: #AF0000; border: none; margin-bottom: 2rem;">Récapitulatif de la Stratégie Loom</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div style="background: white; padding: 2rem; border-radius: 8px; border: 2px solid #000000;">
+                    <h3 style="color: #AF0000; margin-bottom: 1rem;">Stratégie 1</h3>
+                    <p style="font-size: 1rem;">Approche Directe<br>Pour prospects avec lien établi</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: 8px; border: 2px solid #000000;">
+                    <h3 style="color: #AF0000; margin-bottom: 1rem;">Stratégie 2</h3>
+                    <p style="font-size: 1rem;">Approche Progressive<br>Après qualification du besoin</p>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; margin-top: 2rem; color: #000000;">
+                <strong style="color: #AF0000;">Le Loom n'est PAS un pitch de vente.</strong><br>
+                C'est un outil de valeur gratuite pour créer la confiance et démontrer ton expertise.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
